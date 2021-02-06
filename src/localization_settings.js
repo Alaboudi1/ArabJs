@@ -41,7 +41,7 @@ const classifiedKeywords = {
     "oop": {
         "class": "מחלקה",
         "this": "אנוכי",
-        "new": "צרי",
+        "new": "انشى",
         "null": "כלום",
         "extends": "מרחיבה",
         "super": "אמא",

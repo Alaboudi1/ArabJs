@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from React;
+import React, { useEffect, useState } from "react";
 import { Console, Hook, Unhook } from 'console-feed'
 
 
 
 
-export default function Console() {
+export default function JsConsole() {
     const [logs, setLogs] = useState([])
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function Console() {
 
     return (
         <div style={{ backgroundColor: "#242424" }}>
-            <Console filter={["log", "error", "table"]} logs={logs} variant="dark" />
+            <Console filter={["log", "table", "clear"]} logs={logs} variant="dark"  />
         </div>
     )
 
