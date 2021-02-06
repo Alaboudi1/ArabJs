@@ -4,7 +4,7 @@ import {localizedKeyword} from "./localization"
 
 export const reservedWords = {
   3: regexpize(["abstract", "boolean", "byte", "char", "class", "double", "enum", "export", "extends", "final", "float", "goto", "implements", "import", "int", "interface", "long", "native", "package", "private", "protected", "public", "short", "static", "super", "synchronized", "throws", "transient", "volatile"]),
-  5: regexpize(["class", "enum", "extends", "super", "const", "export", "import"]),
+  5: regexpize(["class", "enum", "extends", "super", "const", "export"]), // import removed
   6: regexpize(["enum"]),
   strict: regexpize(["implements", "interface", "let", "package", "private", "protected", "public", "static", "yield"]),
   strictBind: regexpize(["eval", "arguments"])
@@ -13,7 +13,7 @@ export const reservedWords = {
 // And the keywords
 
 const ecma5AndLessKeywordsArray = ["break", "case", "catch", "continue", "debugger", "default", "do", "else", "finally", "for", "function", "if", "return", "switch", "throw", "try", "var", "while", "with", "null", "true", "false", "instanceof", "typeof", "void", "delete", "new", "in", "this"]
-const ecma6KeywordsArray = ["const", "class", "extends", "export", "import", "super"]
+const ecma6KeywordsArray = ["const", "class", "extends", "export", "super"] // import removed
 
 const ecma5AndLessKeywords = regexpize(ecma5AndLessKeywordsArray)
 const ecma6Keywords = regexpize(ecma6KeywordsArray)

@@ -1,11 +1,12 @@
-const {ChavascriptBabelPlugin} = require('../dist/chavascript-parser');
+const { ChavascriptBabelPlugin } = require('../dist/chavascript-parser');
 const babel = require('@babel/core');
 
 const inputCode = `
-יכולת אחד() {
-   יהי א = 12;
-   בקרה.תעד(א);
-}
+
+استورد ("https://unpkg.com/comlink/dist/esm/comlink.mjs")
+
+
+
 `;
 
 const output = babel.transformSync(inputCode, {

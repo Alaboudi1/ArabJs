@@ -782,7 +782,11 @@ pp.parseImport = function(node) {
   if (this.type === tt.string) {
     node.specifiers = empty
     node.source = this.parseExprAtom()
-  } else {
+  }
+  // else if (this.type == tt.parenL){
+  //     node.source = this.parseImport()
+  // } 
+  else {
     node.specifiers = this.parseImportSpecifiers()
     this.expectContextual("from")
     node.source = this.type === tt.string ? this.parseExprAtom() : this.unexpected()
@@ -812,6 +816,7 @@ pp.parseImportSpecifiers = function() {
     nodes.push(this.finishNode(node, "ImportNamespaceSpecifier"))
     return nodes
   }
+
   this.expect(tt.braceL)
   while (!this.eat(tt.braceR)) {
     if (!first) {

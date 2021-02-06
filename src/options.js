@@ -14,7 +14,7 @@ export const defaultOptions = {
   // `sourceType` indicates the mode the code should be parsed in.
   // Can be either `"script"` or `"module"`. This influences global
   // strict mode and parsing of `import` and `export` declarations.
-  sourceType: "script",
+  sourceType: "module",
   // `onInsertedSemicolon` can be a callback that will be called
   // when a semicolon is automatically inserted. It will be passed
   // the position of the comma as an offset, and if `locations` is
