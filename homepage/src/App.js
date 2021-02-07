@@ -32,7 +32,6 @@ export default function App() {
       console.log(arabJs.run(code));
     }
     else if (target === "DOM") {
-      debugger
       arabJs.run(code);
     }
   }

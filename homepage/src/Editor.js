@@ -17,6 +17,7 @@ export default function Editor({ code, editorRef }) {
                     direction: "rtl",
                     rtlMoveVisually: true
                 }}
+                
                 ref={editorRef}
             />
 
