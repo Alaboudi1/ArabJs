@@ -2,7 +2,7 @@ import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "codemirror/theme/liquibyte.css";
-export default function Editor({ code, editorRef }) {
+export default function Editor({ code, editorRef, direction, rtlMoveVisually, readOnly }) {
 
 
     return (
@@ -14,8 +14,10 @@ export default function Editor({ code, editorRef }) {
                     theme: "liquibyte",
                     keyMap: "sublime",
                     mode: "js",
-                    direction: "rtl",
-                    rtlMoveVisually: true
+                    direction,
+                    rtlMoveVisually,
+                    readOnly
+
                 }}
                 
                 ref={editorRef}
