@@ -15,7 +15,7 @@ export default function JsConsole() {
 
     return (
         <div style={{ backgroundColor: "#242424" }}>
-            <Console filter={["log", "table", "clear"]} logs={logs} variant="dark"  />
+            <Console filter={["log", "table", "clear", "info"]} logs={logs} variant="dark"  />
         </div>
     )
 

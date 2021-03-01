@@ -46,21 +46,14 @@ const snippets = [
   //
   ,
   //
-  `
-
-  // ترتيب الدول حسب نسبة الوفاة استناداً
+  `// ترتيب الدول حسب نسبة الوفاة استناداً
   //على الاصابة بفيروس كورونا المستجد  
   لنفرض الرابط = "https://covid19-api.com/country/all?format=json"
-
   لنفرض حمل_المعلومات = (الرابط) => حمل(الرابط).ثم(البيانات => البيانات.الى_جيسون())
-
   لنفرض نقح_البيانات = (البيانات) => البيانات.نقح(({country,confirmed,deaths}) =>
                                                   ({الدولة : country , نسبة_الوفاة :deaths/confirmed*100}))
-
   لنفرض صفي_البيانات = (البيانات) => البيانات.صفي(({نسبة_الوفاة}) => !رقمي(نسبة_الوفاة))
-
-	لنفرض رتب_الدول = (الدول) => الدول.رتب((الاصغر, الاكبر) => الاصغر.نسبة_الوفاة - الاكبر.نسبة_الوفاة)
-
+  لنفرض رتب_الدول = (الدول) => الدول.رتب((الاصغر, الاكبر) => الاصغر.نسبة_الوفاة - الاكبر.نسبة_الوفاة)
   لنفرض الدول_العربية = (الدول) => الدول.صفي(({الدولة}) =>
                                              ["Yemen","Tunisia","Syria","Morocco","Libya","Lebanon","Jordan",
                                               "Iraq","Sudan","Algeria","Egypt","Saudi Arabia", "Qatar", "UAE" ,
@@ -78,7 +71,7 @@ const snippets = [
     .فشل(الخطأ => اطبع.خلل(الخطأ))
 
 // D3 code in JS
-  
+
     لنفرض نمذج_البيانات = (الدول) => {
        margin = {top: 20, right: 20, bottom: 30, left: 40},
           width = 960 - margin.left - margin.right,
@@ -92,9 +85,11 @@ const snippets = [
       
         d3.select(".myChart").html("");
        svg = d3.select(".myChart").append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-        .append("g")
+       .attr("width", '100%')
+       .attr("height", '100%')
+       .attr("viewBox", '20 0 910 7000')
+      .attr('preserveAspectRatio','xMinYMin')
+       .append("g")
           .attr("transform", 
                 "translate(" + margin.left + "," + margin.top + ")");
       
@@ -108,8 +103,11 @@ const snippets = [
             .attr("x", (d)=>  x(d.الدولة))
             .attr("width", x.bandwidth())
             .attr("y", (d)=> y(d.نسبة_الوفاة ))
-            .attr("height", (d)=>  height - y(d.نسبة_الوفاة ));
-      
+            .attr("height", (d)=>  height - y(d.نسبة_الوفاة ))
+            .attr("fill",(d,i)=> d3.interpolateTurbo(i/17))
+
+
+
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x));
@@ -121,11 +119,6 @@ const snippets = [
             .attr("x", -10)
            .style("text-anchor", "start");
     }
-  
-  
-  
-  
-  
   `
   
   ];
