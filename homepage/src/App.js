@@ -72,29 +72,35 @@ export default function App() {
 
   const execute = (finalCode) => {
     finalCode = isArabJSCode ? finalCode : arabJSCode;
-    try{
-    if (target === "console") {
-      console.log(arabJs.run(finalCode));
-      
+    try {
+      if (target === "console") {
+        console.log(arabJs.run(finalCode));
 
-    }
-    else if (target === "DOM") {
-      arabJs.run(finalCode);
-      setLoadingText("أنتظر قليلأ...")
 
+      }
+      else if (target === "DOM") {
+        arabJs.run(finalCode);
+        setLoadingText("أنتظر قليلأ...")
+
+      }
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    } catch (error) {
+      console.info(error)
     }
-  } catch (error) {
-    console.info(error)
-  }
   }
   const runCode = () => {
     const finalCode = editor.current.state.doc.toString();
     execute(finalCode);
   }
   const targetRender = () => {
- return<div key={arabJSCode}> <JsConsole> </JsConsole> 
-      <div className="myChart" width="400" height="400"> {loadingText}
-      </div></div>;
+    return (
+      <div key={arabJSCode}>
+        <JsConsole> </JsConsole>
+        <div className="myChart" width="400" height="400">
+          {loadingText}
+        </div>
+      </div>
+    );
   }
   const changeEditorContent = (finalCode) => {
     editor.current.dispatch(editor.current.state.update(
@@ -104,48 +110,58 @@ export default function App() {
   }
   return (
     <div className="App">
-      <h1>عرب.جس</h1>
-      <h2>برمج جافا سكربت باللغة العربية</h2>
-      <CodeSnippets onCodeChange={(finalCode, target) => { changeEditorContent(finalCode); setArabJsCode(finalCode); setTarget(target); setLoadingText(""); }}></CodeSnippets>
-      <Button
-        variant="contained"
-        color="default"
-        className={classes.button}
-        startIcon={<PlayArrow />}
-        onClick={runCode}
-      >
-        نفذ البرنامج
-      </Button>
-      <Typography component="div">
-        <Grid component="label" container alignItems="center" spacing={1}>
-          <Grid item>ArabJs</Grid>
-          <Grid item>
-            <AntSwitch checked={isArabJSCode} onChange={() => {
-              if (isArabJSCode) {
-                let localCode = editor.current.state.doc.toString();
-                setArabJsCode(localCode);
-                try{
-                setJSCode(arabJs.transpile(localCode));
-                } catch(erro){
-                  setJSCode(`*/Invalid ArabJs code!*/`);
+      <div className="hero">
+        <div className="title">عرب.جس</div>
+        <div className="subTitle"> برمج جافا سكربت باللغة العربية</div>
+      </div>
+      <div className="controls" >
+        <div className="oneControl">
+          <CodeSnippets onCodeChange={(finalCode, target) => { changeEditorContent(finalCode); setArabJsCode(finalCode); setTarget(target); setLoadingText(""); }}></CodeSnippets>
+        </div>
+        <div className="secondoneControl">
+          <Typography component="div">
+            <Grid component="label" container alignItems="center" spacing={1}>
+              <Grid item>ArabJs</Grid>
+              <Grid item>
+                <AntSwitch checked={isArabJSCode} onChange={() => {
+                  if (isArabJSCode) {
+                    let localCode = editor.current.state.doc.toString();
+                    setArabJsCode(localCode);
+                    try {
+                      setJSCode(arabJs.transpile(localCode));
+                    } catch (erro) {
+                      setJSCode(`*/Invalid ArabJs code!*/`);
 
-                  console.error(erro)
+                      console.error(erro)
+                    }
+                  }
+                  setIsArabJsCode(!isArabJSCode);
                 }
-              }
-              setIsArabJsCode(!isArabJSCode);
-            }
-            } name="checkedC" />
-          </Grid>
-          <Grid item>JavaScript</Grid>
-        </Grid>
-      </Typography>
-      {isArabJSCode?
-      <EditorArabJS code={arabJSCode} editor={editor} ></EditorArabJS>:
-      <EditorJS code={JScode}  ></EditorJS>}
+                } name="checkedC" />
+              </Grid>
+              <Grid item>JavaScript</Grid>
+            </Grid>
+          </Typography>
+        </div>
+        <div className= "thirdoneControl">
+          <Button
+            variant="contained"
+            color="default"
+            className={classes.button}
+            startIcon={<PlayArrow />}
+            onClick={runCode}
+          >
+            نفذ البرنامج
+      </Button>
+        </div>
+      </div>
+      {isArabJSCode ?
+        <EditorArabJS code={arabJSCode} editor={editor} ></EditorArabJS> :
+        <EditorJS code={JScode}  ></EditorJS>}
 
       <br />
-      {targetRender()}
 
+      {targetRender()}
     </div>
 
   );
