@@ -1,4 +1,4 @@
-const parser = require("./dist/chavascript-parser");
+const parser = require("./dist/arabJs-parser");
 const escodegen = require("escodegen");
 
 function parse(input, options) {

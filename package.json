@@ -1,13 +1,13 @@
 {
-  "name": "chavascript",
-  "version": "0.1.3",
-  "description": "ChavaScript language transpiler",
+  "name": "arabjs",
+  "version": "0.0.3",
+  "description": "ArabJs transpiler",
   "main": "index.js",
   "module": "index.js",
-  "homepage": "https://chavascript.github.io/chavascript/",
+  "homepage": "https://arabJs.github.io/arabJs/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChavaScript/chavascript"
+    "url": "https://github.com/arabJs/arabJs"
   },
   "license": "MIT",
   "scripts": {
